@@ -8,7 +8,7 @@ Group:		Applications/System
 Source0:	ftp://ftp.informatik.uni-hamburg.de/ftpmnt/inf1/pub/os/unix/utils/plp-unibwhh/%{name}-lpd-%{version}.tar.gz
 # Source0-md5:	c971f3458619a287ce5d8ac93a3d6baf
 Source1:	lpd.init
-#Patch0:		%{name}-%{version}-rh.patch
+Patch0:		%{name}-Makefile.patch
 BuildRequires:	autoconf
 PreReq:		rc-scripts
 Requires(post,preun):	/sbin/chkconfig
@@ -26,7 +26,7 @@ bezpieczeñstwo, a tak¿e wsteczna kompatybilno¶æ.
 
 %prep
 %setup -q
-#%patch -p1
+%patch0 -p1
 
 %build
 cd src
@@ -51,8 +51,9 @@ install -d $RPM_BUILD_ROOT%{_sbindir} \
 	INSTALL_MAINT=$RPM_BUILD_ROOT%{_bindir} \
 	INSTALL_MAN=$RPM_BUILD_ROOT%{_mandir}
 
-install plp.conf $RPM_BUILD_ROOT%{_sysconfdir}/plp.conf
-install printer_perms $RPM_BUILD_ROOT%{_sysconfdir}/printer_perms
+install test/plp.conf* $RPM_BUILD_ROOT%{_sysconfdir}/plp.conf
+install test/printer_perms* $RPM_BUILD_ROOT%{_sysconfdir}/printer_perms
+install test/printcap* $RPM_BUILD_ROOT%{_sysconfdir}/printcap
 
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/lpd
 
@@ -76,6 +77,7 @@ fi
 %doc FEATURES HINTS README LICENSE doc/{%-escapes,README.lp-pipes,plp.xpm} doc/PLP/manual.txt
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/plp.conf
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/printer_perms
+%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/printcap
 %attr(754,root,root) /etc/rc.d/init.d/lpd
 %attr(755,root,root) %{_sbindir}/lpd
 %attr(755,root,root) %{_bindir}/lpr
@@ -92,7 +94,9 @@ fi
 %{_mandir}/man1/lpq.1*
 %{_mandir}/man1/lpr.1*
 %{_mandir}/man1/lprm.1*
+%{_mandir}/man1/printer*.1*
 %{_mandir}/man5/printcap.5*
+%{_mandir}/man5/plp.conf.5*
 %{_mandir}/man8/checkpc.8*
 %{_mandir}/man8/lpd.8*
 %{_mandir}/man8/pac.8*
