@@ -29,7 +29,7 @@ bezpieczeñstwo, a tak¿e wsteczna kompatybilno¶æ.
 
 %build
 cd src
-autoconf
+%{__autoconf}
 # struct statcfs doesn't contain f_basetype on Linux - don't use it
 ac_cv_func_statvfs=no; export ac_cv_func_statvfs
 %configure
