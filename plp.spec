@@ -7,7 +7,8 @@ License:	Free for non-commercial use
 Group:		Applications/System
 Source0:	ftp://ftp.informatik.uni-hamburg.de/ftpmnt/inf1/pub/os/unix/utils/plp-unibwhh/%{name}-lpd-%{version}.tar.gz
 Source1:	lpd.init
-Patch0:		%{name}-%{version}-rh.patch
+#Patch0:		%{name}-%{version}-rh.patch
+BuildRequires:	autoconf
 PreReq:		rc-scripts
 Requires(post,preun):	/sbin/chkconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -24,12 +25,17 @@ bezpieczeñstwo, a tak¿e wsteczna kompatybilno¶æ.
 
 %prep
 %setup -q
-%patch -p1
+#%patch -p1
 
 %build
 cd src
-./configure --prefix=%{_prefix}
-%{__make} SHN_CFLAGS=-DSHORTHOSTNAME
+autoconf
+# struct statcfs doesn't contain f_basetype on Linux - don't use it
+ac_cv_func_statvfs=no; export ac_cv_func_statvfs
+%configure
+%{__make} \
+	CCOPTFLAGS="%{rpmcflags}" \
+	SHN_CFLAGS=-DSHORTHOSTNAME
 
 %install
 rm -rf $RPM_BUILD_ROOT
