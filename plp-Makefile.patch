@@ -1,0 +1,30 @@
+--- plp-4.1.2/src/Makefile.in.orig	2005-03-05 17:05:06.000000000 +0100
++++ plp-4.1.2/src/Makefile.in	2005-03-05 17:06:03.000000000 +0100
+@@ -521,17 +521,17 @@
+ 
+ install: all
+ 	-mv ${INSTALL_LIB}/lpd ${INSTALL_LIB}/lpd-
+-	${INSTALLCMD} -s -o root -m 755 lpd ${INSTALL_LIB}
++	${INSTALLCMD} -s -m 755 lpd ${INSTALL_LIB}
+ 	rm -f ${INSTALL_BIN}/lpq ${INSTALL_BIN}/lpstat
+-	${INSTALLCMD} -s -o root -m 4711 lpq ${INSTALL_BIN}
+-	${INSTALLCMD} -s -o root -m 4711 lprm ${INSTALL_BIN}
+-	${INSTALLCMD} -s -o root -m 4711 lpr ${INSTALL_BIN}
+-	${INSTALLCMD} -s -o root -m 4711 lpc ${INSTALL_MAINT}
+-	${INSTALLCMD} -s -o root -m 755 pac ${INSTALL_MAINT}
+-	${INSTALLCMD} -s -o root -m 755 checkpc ${INSTALL_MAINT}
+-	${INSTALLCMD} -s -o root -m 755 setstatus ${INSTALL_MAINT}
+-	${INSTALLCMD} -s -o root -m 755 printers ${INSTALL_BIN}
+-	${INSTALLCMD} -o root -m 755 lp ${INSTALL_BIN}
++	${INSTALLCMD} -s -m 4711 lpq ${INSTALL_BIN}
++	${INSTALLCMD} -s -m 4711 lprm ${INSTALL_BIN}
++	${INSTALLCMD} -s -m 4711 lpr ${INSTALL_BIN}
++	${INSTALLCMD} -s -m 4711 lpc ${INSTALL_MAINT}
++	${INSTALLCMD} -s -m 755 pac ${INSTALL_MAINT}
++	${INSTALLCMD} -s -m 755 checkpc ${INSTALL_MAINT}
++	${INSTALLCMD} -s -m 755 setstatus ${INSTALL_MAINT}
++	${INSTALLCMD} -s -m 755 printers ${INSTALL_BIN}
++	${INSTALLCMD} -m 755 lp ${INSTALL_BIN}
+ 	ln ${INSTALL_BIN}/lpq ${INSTALL_BIN}/lpstat
+ 
+ install.man: ../doc/man/*.1 ../doc/man/*.5 ../doc/man/*.8
