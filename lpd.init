@@ -1,7 +1,7 @@
 #!/bin/sh
 #
-# lpd           This shell script takes care of starting and stopping
-#               lpd (printer daemon).
+# lpd		This shell script takes care of starting and stopping
+#		lpd (printer daemon).
 #
 # chkconfig:	2345 60 60
 #
@@ -22,9 +22,13 @@
 [ -f /etc/sysconfig/lpd ] && . /etc/sysconfig/lpd
 
 # Check that networking is up.
-if is_no "${NETWORKING}"; then
-        msg_Network_Down Lpd
-        exit 1
+if is_yes "${NETWORKING}"; then
+	if [ ! -f /var/lock/subsys/network ]; then
+		msg_network_down Lpd
+		exit 1
+	fi
+else
+	exit 0
 fi
 			
 # Sanity check
@@ -34,38 +38,38 @@ fi
 case "$1" in
   start)
 	# Check if the service is already running?
-        if [ ! -f /var/lock/subsys/lpd ]; then
-                msg_starting Lpd
-                daemon lpd
-                RETVAL=$?
-                [ $RETVAL -eq 0 ] && touch /var/lock/subsys/lpd
-        else
-                msg_Already_Running Lpd
-                exit 1
-        fi
-        ;;
+	if [ ! -f /var/lock/subsys/lpd ]; then
+		msg_starting Lpd
+		daemon lpd
+		RETVAL=$?
+		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/lpd
+	else
+		msg_already_running Lpd
+		exit 1
+	fi
+	;;
   stop)
-        # Stop daemons.
-        if [ -f /var/lock/subsys/lpd ]; then
-                msg_stopping Lpd
-                killproc lpd
-                rm -f /var/lock/subsys/lpd >/dev/null 2>&1
-        else
-                msg_Not_Running Lpd
-                exit 1
-        fi
-        ;;
+	# Stop daemons.
+	if [ -f /var/lock/subsys/lpd ]; then
+		msg_stopping Lpd
+		killproc lpd
+		rm -f /var/lock/subsys/lpd >/dev/null 2>&1
+	else
+		msg_not_running Lpd
+		exit 1
+	fi
+	;;
   status)
 	status lpd
 	exit $?
 	;;
-  restart)
+  restart|reload)
 	$0 stop
 	$0 start
 	;;
   *)
-	msg_Usage "$0 {start|stop|status|restart}"
-        exit 1
+	msg_usage "$0 {start|stop|restart|reload|status}"
+	exit 1
 esac
 
 exit $RETVAL
