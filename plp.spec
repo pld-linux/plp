@@ -7,7 +7,7 @@ Group: Utilities/System
 Source: plp-lpd-%{version}.tar.gz
 Source1: lpd.init
 Patch: plp-%{version}-rh.patch
-BuildRoot: /tmp/plp-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 PLP is a updated and improved version of the standard UNIX lpr printing
 system. It features enhanced accounting and security, and backwards
@@ -65,7 +65,6 @@ rm -rf $RPM_BUILD_ROOT
 %post
 echo "`hostname -f`		*	*	*		R	A	0	0" >> /etc/printer_perms
 /usr/bin/checkpc -f > /dev/null 2>&1
-
 
 %files
 %doc FEATURES HINTS README LICENSE
