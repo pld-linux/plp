@@ -30,12 +30,12 @@ fi
 # See how we were called.
 case "$1" in
   start)
-        show Starting lpd
+        show "Starting lpd"
         daemon lpd
         touch /var/lock/subsys/lpd
         ;;
   stop)
-        show Shutting down lpd
+        show "Shutting down lpd"
 	killproc lpd
         rm -f /var/lock/subsys/lpd
         ;;
