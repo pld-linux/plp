@@ -6,6 +6,7 @@ Release:	4
 License:	Free for non-commercial use
 Group:		Applications/System
 Source0:	ftp://ftp.informatik.uni-hamburg.de/ftpmnt/inf1/pub/os/unix/utils/plp-unibwhh/%{name}-lpd-%{version}.tar.gz
+# Source0-md5:	c971f3458619a287ce5d8ac93a3d6baf
 Source1:	lpd.init
 #Patch0:		%{name}-%{version}-rh.patch
 BuildRequires:	autoconf
