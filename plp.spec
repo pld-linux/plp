@@ -5,8 +5,6 @@ Version:	4.1.2
 Release:	1
 License:	complicated
 Group:		Applications/System
-Group(de):	Applikationen/System
-Group(pl):	Aplikacje/System
 Source0:	ftp://ftp.informatik.uni-hamburg.de/ftpmnt/inf1/pub/os/unix/utils/plp-unibwhh/%{name}-lpd-%{version}.tar.gz
 Source1:	lpd.init
 Patch0:		%{name}-%{version}-rh.patch
