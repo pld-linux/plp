@@ -2,7 +2,7 @@ Summary:	PLP Printing Package
 Name:		plp
 Version:	4.1.2
 Release:	1
-Copyright:	complicated
+License:	complicated
 Group:		Utilities/System
 Group(pl):	Narzêdzia/System
 Source0:	plp-lpd-%{version}.tar.gz
@@ -30,18 +30,18 @@ cd src
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_sbindir} \
- $RPM_BUILD_ROOT/etc/rc.d/init.d \
- $RPM_BUILD_ROOT%{_bindir} \
-$RPM_BUILD_ROOT%{_prefix}/man/man1 \
-$RPM_BUILD_ROOT%{_prefix}/man/man5 \
-$RPM_BUILD_ROOT%{_prefix}/man/man8 \
-$RPM_BUILD_ROOT%{_prefix}/man/man3
+	$RPM_BUILD_ROOT/etc/rc.d/init.d \
+	$RPM_BUILD_ROOT%{_bindir} \
+	$RPM_BUILD_ROOT%{_prefix}/man/man1 \
+	$RPM_BUILD_ROOT%{_prefix}/man/man5 \
+	$RPM_BUILD_ROOT%{_prefix}/man/man8 \
+	$RPM_BUILD_ROOT%{_prefix}/man/man3
 
 cd src
 %{__make} INSTALL_BIN=$RPM_BUILD_ROOT%{_bindir} \
-INSTALL_LIB=$RPM_BUILD_ROOT%{_sbindir} \
-INSTALL_MAINT=$RPM_BUILD_ROOT%{_bindir} \
-INSTALL_MAN=$RPM_BUILD_ROOT%{_prefix}/man install install.man
+	INSTALL_LIB=$RPM_BUILD_ROOT%{_sbindir} \
+	INSTALL_MAINT=$RPM_BUILD_ROOT%{_bindir} \
+	INSTALL_MAN=$RPM_BUILD_ROOT%{_prefix}/man install install.man
 
 cd ..
 install -o root plp.conf $RPM_BUILD_ROOT%{_sysconfdir}/plp.conf
@@ -49,7 +49,7 @@ install -o root printer_perms $RPM_BUILD_ROOT%{_sysconfdir}/printer_perms
 
 install -m755 $RPM_SOURCE_DIR/lpd.init $RPM_BUILD_ROOT/etc/rc.d/init.d/lpd
 ( cd $RPM_BUILD_ROOT
-install -d ./etc/rc.d/{rc0.d,rc1.d,rc2.d,rc3.d,rc4.d,rc5.d,rc6.d}
+  install -d ./etc/rc.d/{rc0.d,rc1.d,rc2.d,rc3.d,rc4.d,rc5.d,rc6.d}
   ln -sf ../init.d/lpd ./etc/rc.d/rc0.d/K60lpd
   ln -sf ../init.d/lpd ./etc/rc.d/rc1.d/K60lpd
   ln -sf ../init.d/lpd ./etc/rc.d/rc2.d/S60lpd
