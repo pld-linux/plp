@@ -8,7 +8,8 @@ Group:		Applications/System
 Source0:	ftp://ftp.informatik.uni-hamburg.de/ftpmnt/inf1/pub/os/unix/utils/plp-unibwhh/%{name}-lpd-%{version}.tar.gz
 Source1:	lpd.init
 Patch0:		%{name}-%{version}-rh.patch
-Prereq:		/sbin/chkconfig
+PreReq:		rc-scripts
+Requires(post,preun):	/sbin/chkconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -37,13 +38,12 @@ install -d $RPM_BUILD_ROOT%{_sbindir} \
 	$RPM_BUILD_ROOT%{_bindir} \
 	$RPM_BUILD_ROOT%{_mandir}/man{1,3,5,8}
 
-cd src
-%{__make} INSTALL_BIN=$RPM_BUILD_ROOT%{_bindir} \
+%{__make} -C src install install.man \
+	INSTALL_BIN=$RPM_BUILD_ROOT%{_bindir} \
 	INSTALL_LIB=$RPM_BUILD_ROOT%{_sbindir} \
 	INSTALL_MAINT=$RPM_BUILD_ROOT%{_bindir} \
-	INSTALL_MAN=$RPM_BUILD_ROOT%{_mandir} install install.man
+	INSTALL_MAN=$RPM_BUILD_ROOT%{_mandir}
 
-cd ..
 install plp.conf $RPM_BUILD_ROOT%{_sysconfdir}/plp.conf
 install printer_perms $RPM_BUILD_ROOT%{_sysconfdir}/printer_perms
 
@@ -67,8 +67,8 @@ fi
 %files
 %defattr(644,root,root,755)
 %doc FEATURES HINTS README LICENSE doc/{%-escapes,README.lp-pipes,plp.xpm} doc/PLP/manual.txt
-%config %{_sysconfdir}/plp.conf
-%config %{_sysconfdir}/printer_perms
+%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/plp.conf
+%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/printer_perms
 %attr(754,root,root) /etc/rc.d/init.d/lpd
 %attr(755,root,root) %{_sbindir}/lpd
 %attr(755,root,root) %{_bindir}/lpr
