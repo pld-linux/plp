@@ -28,7 +28,7 @@ bezpieczeñstwo, a tak¿e wsteczna kompatybilno¶æ.
 %build
 cd src
 ./configure --prefix=%{_prefix}
-%{__make} SHN_CFLAGS=-DSHORTHOSTNAME 
+%{__make} SHN_CFLAGS=-DSHORTHOSTNAME
 
 %install
 rm -rf $RPM_BUILD_ROOT
