@@ -43,7 +43,6 @@ INSTALL_LIB=$RPM_BUILD_ROOT%{_sbindir} \
 INSTALL_MAINT=$RPM_BUILD_ROOT%{_bindir} \
 INSTALL_MAN=$RPM_BUILD_ROOT%{_prefix}/man install install.man
 
-strip $RPM_BUILD_ROOT%{_bindir}/* $RPM_BUILD_ROOT%{_sbindir}/* ||:
 cd ..
 install -o root plp.conf $RPM_BUILD_ROOT%{_sysconfdir}/plp.conf
 install -o root printer_perms $RPM_BUILD_ROOT%{_sysconfdir}/printer_perms
