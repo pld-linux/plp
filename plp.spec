@@ -2,8 +2,8 @@ Summary:	PLP Printing Package
 Summary(pl):	Pakiet drukuj±cy PLP
 Name:		plp
 Version:	4.1.2
-Release:	2
-License:	free for non-commercial use
+Release:	4
+License:	Free for non-commercial use
 Group:		Applications/System
 Source0:	ftp://ftp.informatik.uni-hamburg.de/ftpmnt/inf1/pub/os/unix/utils/plp-unibwhh/%{name}-lpd-%{version}.tar.gz
 Source1:	lpd.init
@@ -51,9 +51,6 @@ install %{SOURCE1} $RPM_BUILD_ROOT/etc/rc.d/init.d/lpd
 
 install -d $RPM_BUILD_ROOT/var/spool/lpd
 
-gzip -9nf FEATURES HINTS README LICENSE doc/{%-escapes,README.lp-pipes} \
-	doc/PLP/manual.txt
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -69,7 +66,7 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz doc/*.gz doc/plp.xpm doc/PLP/*.gz
+%doc FEATURES HINTS README LICENSE doc/{%-escapes,README.lp-pipes,plp.xpm} doc/PLP/manual.txt
 %config %{_sysconfdir}/plp.conf
 %config %{_sysconfdir}/printer_perms
 %attr(754,root,root) /etc/rc.d/init.d/lpd
