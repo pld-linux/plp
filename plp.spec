@@ -25,7 +25,7 @@ backwards compatibility.
 %build
 cd src
 ./configure --prefix=%{_prefix}
-make SHN_CFLAGS=-DSHORTHOSTNAME 
+%{__make} SHN_CFLAGS=-DSHORTHOSTNAME 
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -38,7 +38,7 @@ $RPM_BUILD_ROOT%{_prefix}/man/man8 \
 $RPM_BUILD_ROOT%{_prefix}/man/man3
 
 cd src
-make INSTALL_BIN=$RPM_BUILD_ROOT%{_bindir} \
+%{__make} INSTALL_BIN=$RPM_BUILD_ROOT%{_bindir} \
 INSTALL_LIB=$RPM_BUILD_ROOT%{_sbindir} \
 INSTALL_MAINT=$RPM_BUILD_ROOT%{_bindir} \
 INSTALL_MAN=$RPM_BUILD_ROOT%{_prefix}/man install install.man
