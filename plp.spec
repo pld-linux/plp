@@ -74,7 +74,7 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc FEATURES HINTS README LICENSE doc/{%-escapes,README.lp-pipes,plp.xpm} doc/PLP/manual.txt
+%doc CHANGES FEATURES HINTS README LICENSE TODO doc/{%-escapes,README.lp-pipes,plp.xpm} doc/PLP/manual.txt
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/plp.conf
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/printer_perms
 %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/printcap
