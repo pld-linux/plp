@@ -9,14 +9,12 @@ Source0:	plp-lpd-%{version}.tar.gz
 Source1:	lpd.init
 Patch0:		plp-%{version}-rh.patch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
 %description
 PLP is a updated and improved version of the standard UNIX lpr
 printing system. It features enhanced accounting and security, and
 backwards compatibility.
 
-%Changelog
-- Sun Jun 06 1999 Vu Hung Quan <binaire@binaire.cx>
-- Update to 4.1.2 ; adapted from Suse source
 
 %prep
 %setup -q
