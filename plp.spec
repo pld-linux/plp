@@ -2,8 +2,8 @@ Summary:	PLP Printing Package
 Summary(pl):	Pakiet drukuj±cy PLP
 Name:		plp
 Version:	4.1.2
-Release:	1
-License:	complicated
+Release:	2
+License:	free for non-commercial use
 Group:		Applications/System
 Source0:	ftp://ftp.informatik.uni-hamburg.de/ftpmnt/inf1/pub/os/unix/utils/plp-unibwhh/%{name}-lpd-%{version}.tar.gz
 Source1:	lpd.init
