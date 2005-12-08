@@ -30,7 +30,7 @@ if is_yes "${NETWORKING}"; then
 else
 	exit 0
 fi
-			
+
 # Sanity check
 [ -f /etc/printcap ] || exit 1
 
