@@ -10,8 +10,8 @@ Source0:	ftp://ftp.informatik.uni-hamburg.de/ftpmnt/inf1/pub/os/unix/utils/plp-u
 Source1:	lpd.init
 Patch0:		%{name}-Makefile.patch
 BuildRequires:	autoconf
-PreReq:		rc-scripts
 Requires(post,preun):	/sbin/chkconfig
+Requires:	rc-scripts
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -75,9 +75,9 @@ fi
 %files
 %defattr(644,root,root,755)
 %doc CHANGES FEATURES HINTS README LICENSE TODO doc/{%-escapes,README.lp-pipes,plp.xpm} doc/PLP/manual.txt
-%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/plp.conf
-%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/printer_perms
-%config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/printcap
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/plp.conf
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/printer_perms
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/printcap
 %attr(754,root,root) /etc/rc.d/init.d/lpd
 %attr(755,root,root) %{_sbindir}/lpd
 %attr(755,root,root) %{_bindir}/lpr
