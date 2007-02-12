@@ -1,5 +1,5 @@
 Summary:	PLP Printing Package
-Summary(pl):	Pakiet drukuj±cy PLP
+Summary(pl.UTF-8):   Pakiet drukujÄ…cy PLP
 Name:		plp
 Version:	4.1.2
 Release:	4
@@ -19,10 +19,10 @@ PLP is a updated and improved version of the standard UNIX lpr
 printing system. It features enhanced accounting and security, and
 backwards compatibility.
 
-%description -l pl
-PLP jest uaktualnion± i rozszerzon± wersj± standardowego uniksowego
-systemu drukuj±cego lpr. Jego cechy to rozszerzona kontrola i
-bezpieczeñstwo, a tak¿e wsteczna kompatybilno¶æ.
+%description -l pl.UTF-8
+PLP jest uaktualnionÄ… i rozszerzonÄ… wersjÄ… standardowego uniksowego
+systemu drukujÄ…cego lpr. Jego cechy to rozszerzona kontrola i
+bezpieczeÅ„stwo, a takÅ¼e wsteczna kompatybilnoÅ›Ä‡.
 
 %prep
 %setup -q
