@@ -1,5 +1,5 @@
 Summary:	PLP Printing Package
-Summary(pl.UTF-8):   Pakiet drukujący PLP
+Summary(pl.UTF-8):	Pakiet drukujący PLP
 Name:		plp
 Version:	4.1.2
 Release:	4
